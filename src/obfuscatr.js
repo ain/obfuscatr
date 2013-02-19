@@ -1,6 +1,6 @@
 /********************************************************
 
-    Copyright (c) 2007-2008 Flashbit LLC
+    Copyright (c) 2007 Flashbit LLC
     Authors: Ain Tohvri <ain@flashbit.net>
     
 ********************************************************/
@@ -12,47 +12,25 @@ String.prototype.bin2hex = function()
 	return str;
 }
 
-// initialize
-function init() {
-    stage = 0; // stage ID indicating the stage obfuscation is at
+function init()
+{
+    defaultValue = 'Enter an email here';
+    // front elements
     front = document.getElementById("front");
     fliprollie = document.getElementById("fliprollie");
     flip = document.getElementById ("flip");
-    // front elements
     field = document.getElementById('field');
     btn = document.getElementById('btn');
     msg = document.getElementById('msg');
     box = document.getElementById('box');
+    box.value = defaultValue;
     createGenericButton(btn, "Obfuscate!", obfuscate);
     // back elements
-    jsCBox = document.getElementById('jsCBox');
     back = document.getElementById("back");
     doneBtn = document.getElementById('doneBtn');
     createGenericButton(doneBtn, "Done", hideBack);
-    // focus
+    // focus on input field
     toggle();
-}
-
-function setJSEnabled()
-{
-    jsCBox.checked = !jsCBox.checked;
-}
-
-/**
-    Exclusively used for catching the Enter key
- */
-function proceed()
-{
-    // halt on 0 input
-    if (box.value == '') return false;
-    // proceed according to the active stage
-    switch (stage) {
-        case 1:
-            copy();
-            break;
-        default:
-            obfuscate();
-    }
 }
 
 function obfuscate()
@@ -63,14 +41,9 @@ function obfuscate()
     } else if (!isValidEmail(email)) {
         errorHandler(2);
     } else {
-        // obfuscate in respect of the selected method of obfuscation
-        if (jsCBox.checked) {        
-            var jsStr = 'document.write(\'<a href="mailto:'+email+'">'+email+'</a>\');',
-                encStr = jsStr.bin2hex();
-            obfStr = '<script type="text/javascript">eval(unescape("' + encStr + '"));</script>';
-        } else {
-            obfStr = email.bin2hex();
-        }
+        var jsStr = 'document.write(\'<a href="mailto:'+email+'">'+email+'</a>\');',
+            encStr = jsStr.bin2hex();
+        obfStr = '<script type="text/javascript">eval(unescape("' + encStr + '"));</script>';
         btn.innerHTML = '';
         createGenericButton(btn, "Copy", copy);
         stage = 1;
@@ -128,7 +101,7 @@ function goBack()
  */
 function isValidEmail(email)
 {
-    var rgx = /^([\w-\.\+])+\@([\w-]+\.)+([\w]{2,4})+$/;
+    var rgx = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return rgx.test(email);
 }
 
