@@ -3,19 +3,22 @@ body {margin:0px; font-size:14px; font-family:Helvetica, sans-serif; font-size:1
 a {color:#acb8c6; text-decoration:none;}
 a:hover {color:#f58621;}
 
-div#front, div#back {position:absolute; width:343px; height:73px; z-index:1;}
-div#front {background-image:url('Default.png'); background-repeat:no-repeat;}
-div#back {display:none; background-image:url('Backside.png'); background-repeat:no-repeat;}
+#front, #back {position:absolute; width:343px; height:73px; z-index:1;}
+#front {background-image:url('Default.png'); background-repeat:no-repeat;}
+#back {display:none; background-image:url('Backside.png'); background-repeat:no-repeat;}
 
-div#field {position:absolute; top:25px; left:30px; dispay:block;}
-div#msg {position:absolute; top:30px; left:30px; display:none; color:#404042; font-size:12px; text-shadow:2px 2px 1px #FFFFFF;}
-div#btn, div#doneBtn {position:absolute; top:25px; right:25px;}
+#field {position:absolute; top:25px; left:30px; dispay:block;}
+#msg {position:absolute; top:30px; left:30px; display:none; color:#404042; font-size:12px; text-shadow:2px 2px 1px #fff;}
+#btn, #doneBtn {position:absolute; top:25px; right:25px;}
 
 .flipi {position: absolute; bottom:5px; right:5px; width:13px; height:13px;}
 #flip {opacity:0; background: url(file:///System/Library/WidgetResources/ibutton/white_i.png) no-repeat top left; z-index:8000;}
 #fliprollie {display:none; opacity:0.2; background:url(file:///System/Library/WidgetResources/ibutton/white_rollie.png) no-repeat top left; z-index:7999;}
 
-div#logo {position:absolute; top:8px; left:20px; font-size:21px; cursor:pointer; display:block;}
-div#logo span {color:#f58621;}
+#logo {position:absolute; top:4px; left:20px; font-size:21px; cursor:pointer; display:block; z-index:0;}
+#logo span {color:#f58621;}
 
-div#txt {position:absolute; left:22px; top:37px; font-size:11px; text-shadow:2px 2px 1px #FFFFFF;}
+#txt {position:absolute; left:22px; bottom:6px; font-size:11px; text-shadow:2px 2px 1px #fff; color:#acb8c6; z-index:1;}
+
+#options {position:absolute; left:20px; top:31px; font-size:13px; text-shadow:2px 2px 1px #fff; z-index:2; color:#8d99a7;}
+#options a, #options a:hover {color:#8d99a7;}

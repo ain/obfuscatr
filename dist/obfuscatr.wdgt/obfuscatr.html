@@ -1,17 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
     <head>
         <title>obfuscatr - email address obfuscator</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="Copyright" content="Copyright &copy; 2007 Flashbit LLC. All rights reserved" />
-        <meta name="Author" content="Flashbit LLC" />
         <link rel="stylesheet" href="obfuscatr.css" type="text/css" media="screen" />
         <script type="text/javascript" src="obfuscatr.js"></script>
         <script type='text/javascript' src='file:///System/Library/WidgetResources/button/genericButton.js' charset='utf-8'/>
     </head>
     <body onload="init()">
         <div id="front" onmousemove="mousemove(event)" onmouseout="mouseexit(event)">
-            <div id="field"><input type="search" id="box" name="email" size="27" /></div>
+            <div id="field"><input type="search" id="box" name="email" size="27" onsearch="proceed()" value="Enter an email here" /></div>
             <div id="msg"></div>
             <div id="btn"></div>
             <div class="flipi" id="flip" onclick="showBack(event)" onmouseover="enterflip(event)" onmouseout="exitflip(event)"></div> 
@@ -19,8 +15,12 @@
         </div>
         <div id="back">
             <div id="logo" onclick="widget.openURL('http://obfuscatr.flashbit.net/index.html')">obfuscat<span>r</span></div>
-            <div id="txt"><a href="javascript:widget.openURL('http://obfuscatr.flashbit.net/#download')">Version 1.0.0</a>.<br />Copyright &copy; 2007 Flashbit LLC.</div>
+            <div id="options">
+                <input type="checkbox" id="jsCBox" name="jsEnabled" checked="checked" /> 
+                <a href="#" onclick="setJSEnabled()">Javascript obfuscation</a>
+            </div>
+            <div id="txt"><a href="javascript:widget.openURL('http://obfuscatr.flashbit.net/#changelog')">Version 1.1.0</a> &copy; 2007-2008 Flashbit LLC.</div>
             <div id="doneBtn" onclick="hideBack()"></div>
-        </back>
+        </div>
     </body>
 </html>
