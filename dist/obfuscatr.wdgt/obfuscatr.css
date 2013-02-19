@@ -8,7 +8,7 @@ a:hover {color:#f58621;}
 #back {display:none; background-image:url('Backside.png'); background-repeat:no-repeat;}
 
 #field {position:absolute; top:25px; left:30px; dispay:block;}
-#msg {position:absolute; top:30px; left:30px; display:none; color:#404042; font-size:12px; text-shadow:2px 2px 1px #fff;}
+#msg {position:absolute; top:30px; left:30px; display:none; color:#404042; font-size:12px; text-shadow:1px 1px 1px #fff;}
 #btn, #doneBtn {position:absolute; top:25px; right:25px;}
 
 .flipi {position: absolute; bottom:5px; right:5px; width:13px; height:13px;}
@@ -18,7 +18,7 @@ a:hover {color:#f58621;}
 #logo {position:absolute; top:4px; left:20px; font-size:21px; cursor:pointer; display:block; z-index:0;}
 #logo span {color:#f58621;}
 
-#txt {position:absolute; left:22px; bottom:6px; font-size:11px; text-shadow:2px 2px 1px #fff; color:#acb8c6; z-index:1;}
+#txt {position:absolute; left:22px; bottom:6px; font-size:11px; text-shadow:1px 1px 1px #fff; color:#acb8c6; z-index:1;}
 
-#options {position:absolute; left:20px; top:31px; font-size:13px; text-shadow:2px 2px 1px #fff; z-index:2; color:#8d99a7;}
+#options {position:absolute; left:20px; top:31px; font-size:13px; text-shadow:1px 1px 1px #fff; z-index:2; color:#8d99a7;}
 #options a, #options a:hover {color:#8d99a7;}

@@ -128,7 +128,7 @@ function goBack()
  */
 function isValidEmail(email)
 {
-    var rgx = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var rgx = /^([\w-\.\+])+\@([\w-]+\.)+([\w]{2,4})+$/;
     return rgx.test(email);
 }
 
