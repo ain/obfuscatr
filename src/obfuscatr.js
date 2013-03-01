@@ -44,7 +44,7 @@ function setJSEnabled()
 }
 
 /**
- *  TODO: validate use and clean up.
+ *  Proceed button handler.
  */
 function proceed()
 {
