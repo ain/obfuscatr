@@ -36,6 +36,13 @@ function init() {
   createGenericButton(doneBtn, "Done", hideBack);
   // focus
   toggle();
+
+  document.getElementById('changelogLink').onclick = function() {
+    widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
+  };
+  document.getElementById('doneBtn').onclick = function() {
+    hideBack();
+  };
 }
 
 function setJSEnabled()
