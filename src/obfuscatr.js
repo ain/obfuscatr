@@ -7,8 +7,7 @@
 
 ********************************************************/
 
-String.prototype.bin2hex = function()
-{
+String.prototype.bin2hex = function() {
   var str = '';
   for (x = 0, l = this.split("").length; x < l; x++)
     str += '%'+this.charCodeAt(x).toString(16);
@@ -34,6 +33,8 @@ function init() {
   createGenericButton(btn, "Obfuscate!", obfuscate);
 
   // back elements
+  logo = document.getElementById('logo');
+  changelogLink = document.getElementById('changelogLink');
   jsCBox = document.getElementById('jsCBox');
   back = document.getElementById("back");
   doneBtn = document.getElementById('doneBtn');
@@ -45,24 +46,27 @@ function init() {
 }
 
 function addEventListeners() {
-  document.getElementById('changelogLink').onclick = function() {
-    widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
-  };
-  document.getElementById('doneBtn').onclick = function() {
-    hideBack();
-  };
+  // front elements
+  front.onmousemove = mousemove;
+  front.onmouseout = mouseexit;
+
+  // back elements
+  logo.onclick = launchSite;
+  changelogLink.onclick = launchChangelog;
+  doneBtn.onclick = hideBack;
+  flip.onclick = showBack;
+  flip.onmouseover = enterflip;
+  flip.onmouseout = exitflip;
 }
 
-function setJSEnabled()
-{
+function setJSEnabled() {
   jsCBox.checked = !jsCBox.checked;
 }
 
 /**
  *  Proceed button handler.
  */
-function proceed()
-{
+function proceed() {
   // halt on 0 input
   if (box.value == '') return false;
   // proceed according to the active stage
@@ -78,8 +82,7 @@ function proceed()
 /**
  * Obfuscate the email.
  */
-function obfuscate()
-{
+function obfuscate() {
   email = box.value;
   if (email.length == 0) {
     errorHandler(1);
@@ -105,8 +108,7 @@ function obfuscate()
 /**
  * Copy the result to clipboard.
  */
-function copy()
-{
+function copy() {
   widget.system("/bin/echo -n '" + obfStr.toString() + "' | /usr/bin/pbcopy", null);
   errorHandler(3);
 }
@@ -116,8 +118,7 @@ function copy()
  *
  * @param {number} Error number
  */
-function errorHandler(eid)
-{
+function errorHandler(eid) {
   var str;
   switch (eid) {
     case 1:
@@ -139,8 +140,7 @@ function errorHandler(eid)
   createGenericButton(btn, "Back", goBack);
 }
 
-function goBack()
-{
+function goBack() {
   btn.innerHTML = '';
   msg.innerHTML = '';
   field.style.display = 'block';
@@ -154,14 +154,20 @@ function goBack()
  * @param {String} email The email that is validated for obfuscation
  * @return {Boolean} true if email is valid, false otherwise
  */
-function isValidEmail(email)
-{
+function isValidEmail(email) {
   var rgx = /^([\w-\.\+])+\@([\w-]+\.)+([\w]{2,4})+$/;
   return rgx.test(email);
 }
 
-function toggle()
-{
+function toggle() {
   box.focus();
   box.select();
+}
+
+function launchChangelog() {
+  widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
+}
+
+function launchSite() {
+  widget.openURL('http://obfuscatr.flashbit.net')
 }
