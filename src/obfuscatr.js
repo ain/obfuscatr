@@ -13,6 +13,9 @@ String.prototype.bin2hex = function() {
     str += '%'+this.charCodeAt(x).toString(16);
   return str;
 }
+String.prototype.reverse = function() {
+  return this.split("").reverse().join("");
+}
 
 /**
  * Initialize
@@ -34,11 +37,11 @@ function init() {
 
   // back elements
   logo = document.getElementById('logo');
-  changelogLink = document.getElementById('changelogLink');
-  jsCBox = document.getElementById('jsCBox');
+  linkChangelog = document.getElementById('link-changelog');
+  algorithmJs = document.getElementById('algorithm-js');
   back = document.getElementById("back");
-  doneBtn = document.getElementById('doneBtn');
-  createGenericButton(doneBtn, "Done", hideBack);
+  btnDone = document.getElementById('btn-done');
+  createGenericButton(btnDone, "Done", hideBack);
   // focus
   toggle();
 
@@ -52,15 +55,15 @@ function addEventListeners() {
 
   // back elements
   logo.onclick = launchSite;
-  changelogLink.onclick = launchChangelog;
-  doneBtn.onclick = hideBack;
+  linkChangelog.onclick = launchChangelog;
+  btnDone.onclick = hideBack;
   flip.onclick = showBack;
   flip.onmouseover = enterflip;
   flip.onmouseout = exitflip;
 }
 
 function setJSEnabled() {
-  jsCBox.checked = !jsCBox.checked;
+  algorithmJs.checked = !algorithmJs.checked;
 }
 
 /**
@@ -90,12 +93,12 @@ function obfuscate() {
     errorHandler(2);
   } else {
     // obfuscate in respect of the selected method of obfuscation
-    if (jsCBox.checked) {
-      var jsStr = 'document.write(\'<a href="mailto:'+email+'">'+email+'</a>\');',
-      encStr = jsStr.bin2hex();
-      obfStr = '<script type="text/javascript">eval(unescape("' + encStr + '"));</script>';
+    if (algorithmJs.checked) {
+      var jsStr = 'document.write(\'<a href="mailto:' + email + '">' + email + '</a>\');',
+      obfStr = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
     } else {
-      obfStr = email.bin2hex();
+      obfStr = '<script type="text/javascript">function obfuscatrtr() { window.location = \'mailto:\' + this.innerHTML.split("").reverse().join(""); }</script>\
+        <a href="javascript:void(0);" onclick="obfuscatrtr.apply(this)" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
     }
     btn.innerHTML = '';
     createGenericButton(btn, "Copy", copy);
@@ -122,15 +125,15 @@ function errorHandler(eid) {
   var str;
   switch (eid) {
     case 1:
-      str = 'Please enter an email to obfuscate';
+      str = 'Please enter email to obfuscate.';
       break;
     case 2:
-      str = 'Invalid email. Please fix';
+      str = 'Invalid email. Please fix.';
       break;
     case 3:
       // set box contents to initial email
       box.value = email;
-      str = 'Done. Email copied to clipboard';
+      str = 'Done. Email copied to clipboard.';
       break;
   }
   field.style.display = 'none';
