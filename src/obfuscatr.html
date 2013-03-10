@@ -3,12 +3,15 @@
   <head>
     <title>obfuscatr - email address obfuscator</title>
     <link rel="stylesheet" href="obfuscatr.css" type="text/css" media="screen">
-    <script type="text/javascript" src="apple.js"></script>
     <script type="text/javascript" src="obfuscatr.js"></script>
     <script type='text/javascript' src='file:///System/Library/WidgetResources/button/genericButton.js' charset='utf-8'></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+      var obfuscatr = new Obfuscatr();
+      window.onload = obfuscatr.init.inScope(obfuscatr);
+    </script>
   </head>
-  <body onload="init()">
+  <body>
     <div id="front">
       <div id="field">
         <input type="search" id="box" name="email" size="27" placeholder="Enter your email here">
