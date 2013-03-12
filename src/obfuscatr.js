@@ -10,7 +10,7 @@ String.prototype.reverse = function() {
 Function.prototype.inScope = function(scope)
 {
   var that = this;
-  return function ()
+  return function()
   {
     return that.apply(scope, arguments);
   };
@@ -32,7 +32,7 @@ function Obfuscatr() {
   this.back = null;
   this.btnDone = null;
   this.flipShown = false;
-  this.animation =  {
+  this.animation = {
     duration:0,
     starttime:0,
     to:1.0,
@@ -51,14 +51,14 @@ Obfuscatr.prototype.init = function() {
   this.btn = document.getElementById('btn');
   this.msg = document.getElementById('msg');
   this.box = document.getElementById('box');
-  createGenericButton(this.btn, "Obfuscate!", this.obfuscate);
+  createGenericButton(this.btn, "Obfuscate!", this.obfuscate.inScope(this));
 
   this.logo = document.getElementById('logo');
   this.linkChangelog = document.getElementById('link-changelog');
   this.algorithmJs = document.getElementById('algorithm-js');
   this.back = document.getElementById("back");
   this.btnDone = document.getElementById('btn-done');
-  createGenericButton(this.btnDone, "Done", this.hideBack);
+  createGenericButton(this.btnDone, "Done", this.hideBack.inScope(this));
 
   this.toggle();
 
@@ -66,14 +66,14 @@ Obfuscatr.prototype.init = function() {
 }
 
 Obfuscatr.prototype.addEventListeners = function() {
-  this.front.onmousemove = this.mousemove;
-  this.front.onmouseout = this.mouseexit;
-  this.logo.onclick = this.launchSite;
-  this.linkChangelog.onclick = this.launchChangelog;
-  this.btnDone.onclick = this.hideBack;
-  this.flip.onclick = this.showBack;
-  this.flip.onmouseover = this.enterflip;
-  this.flip.onmouseout = this.exitflip;
+  this.front.onmousemove = this.mousemove.inScope(this);
+  this.front.onmouseout = this.mouseexit.inScope(this);
+  this.logo.onclick = this.launchSite.inScope(this);
+  this.linkChangelog.onclick = this.launchChangelog.inScope(this);
+  this.btnDone.onclick = this.hideBack.inScope(this);
+  this.flip.onclick = this.showBack.inScope(this);
+  this.flip.onmouseover = this.enterflip.inScope(this);
+  this.flip.onmouseout = this.exitflip.inScope(this);
 }
 
 Obfuscatr.prototype.isValidEmail = function(email) {
@@ -134,7 +134,7 @@ Obfuscatr.prototype.goBack = function(event) {
   this.btn.innerHTML = '';
   this.msg.innerHTML = '';
   this.field.style.display = 'block';
-  createGenericButton(this.btn, "Obfuscate!", this.obfuscate);
+  createGenericButton(this.btn, "Obfuscate!", this.obfuscate.inScope(this));
   toggle();
 }
 
@@ -204,11 +204,11 @@ Obfuscatr.prototype.exitflip = function(event) {
 Obfuscatr.prototype.animate = function() {
   var T;
   var ease;
-  var time = (new Date()).getTime();
+  var time = new Date().getTime();
   T = this.limit_3(time - this.animation.starttime, 0, this.animation.duration);
 
   if (T >= this.animation.duration) {
-    clearInterval (this.animation.timer);
+    clearInterval(this.animation.timer);
     this.animation.timer = null;
     this.animation.now = this.animation.to;
   } else {
@@ -224,14 +224,13 @@ Obfuscatr.prototype.mousemove = function(event) {
       clearInterval(this.animation.timer);
       this.animation.timer  = null;
     }
-    var starttime = (new Date()).getTime() - 13;
     this.animation.duration = 500;
-    this.animation.starttime = starttime;
+    this.animation.starttime = new Date().getTime() - 13;;
     this.animation.firstElement = this.flip;
-    this.animation.timer = setInterval(this.animate, 13);
+    this.animation.timer = setInterval(this.animate.inScope(this), 13);
     this.animation.from = this.animation.now;
     this.animation.to = 1.0;
-    this.animate();
+    this.animate(this);
     this.flipShown = true;
   }
 }
@@ -243,11 +242,10 @@ Obfuscatr.prototype.mouseexit = function(event) {
       clearInterval(this.animation.timer);
       this.animation.timer  = null;
     }
-    var starttime = (new Date()).getTime() - 13;
     this.animation.duration = 500;
-    this.animation.starttime = starttime;
+    this.animation.starttime = new Date().getTime() - 13;
     this.animation.firstElement = this.flip;
-    this.animation.timer = setInterval(this.animate, 13);
+    this.animation.timer = setInterval(this.animate.inScope(this), 13);
     this.animation.from = this.animation.now;
     this.animation.to = 0.0;
     this.animate();
