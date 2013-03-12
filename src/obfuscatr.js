@@ -44,6 +44,17 @@ function Obfuscatr() {
   };
 }
 
+/**
+ * Retrieve Dashboard Widget API.
+ *
+ * @todo return mock system if API is missing
+ *
+ * @returns {@exp;window@pro;widget}
+ */
+Obfuscatr.prototype.widget = function() {
+  return window.widget;
+}
+
 Obfuscatr.prototype.init = function() {
   this.front = document.getElementById("front");
   this.fliprollie = document.getElementById("fliprollie");
@@ -128,8 +139,10 @@ Obfuscatr.prototype.obfuscate = function() {
 };
 
 Obfuscatr.prototype.copy = function() {
-  widget.system("/bin/echo -n '" + this.obfStr.toString() + "' | /usr/bin/pbcopy", null);
-  this.errorHandle(3);
+//  if (window.widget) {
+    this.widget.system("/bin/echo -n '" + this.obfStr.toString() + "' | /usr/bin/pbcopy", null);
+    this.errorHandle(3);
+//  }
 };
 
 Obfuscatr.prototype.goBack = function(event) {
@@ -141,11 +154,13 @@ Obfuscatr.prototype.goBack = function(event) {
 };
 
 Obfuscatr.prototype.launchChangelog = function() {
-  widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
+  if (this.widget) {
+    this.widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
+  }
 };
 
 Obfuscatr.prototype.launchSite = function() {
-  widget.openURL('http://obfuscatr.flashbit.net');
+  this.widget.openURL('http://obfuscatr.flashbit.net');
 };
 
 Obfuscatr.prototype.toggle = function() {
@@ -170,19 +185,15 @@ Obfuscatr.prototype.proceed = function() {
 Obfuscatr.prototype.showBack = function() {
   this.front.style.display = "none";
   this.back.style.display = "block";
-  if (window.widget) {
-    widget.prepareForTransition("ToBack");
-    setTimeout (widget.performTransition, 0);
-  }
+  this.widget.prepareForTransition("ToBack");
+  setTimeout (this.widget.performTransition, 0);
 };
 
 Obfuscatr.prototype.hideBack = function () {
   this.back.style.display = "none";
   this.front.style.display = "block";
-  if (window.widget) {
-    widget.prepareForTransition("ToFront");
-    setTimeout (widget.performTransition, 0);
-  }
+  this.widget.prepareForTransition("ToFront");
+  setTimeout (this.widget.performTransition, 0);
 };
 
 Obfuscatr.prototype.limit_3 = function(a, b, c) {
