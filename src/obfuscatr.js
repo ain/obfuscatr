@@ -1,12 +1,13 @@
 String.prototype.bin2hex = function() {
   var str = '';
-  for (x = 0, l = this.split("").length; x < l; x++)
+  for (var x = 0, l = this.split("").length; x < l; x++) {
     str += '%'+this.charCodeAt(x).toString(16);
+  }
   return str;
-}
+};
 String.prototype.reverse = function() {
   return this.split("").reverse().join("");
-}
+};
 Function.prototype.inScope = function(scope)
 {
   var that = this;
@@ -63,7 +64,7 @@ Obfuscatr.prototype.init = function() {
   this.toggle();
 
   this.addEventListeners();
-}
+};
 
 Obfuscatr.prototype.addEventListeners = function() {
   this.front.onmousemove = this.mousemove.inScope(this);
@@ -74,12 +75,12 @@ Obfuscatr.prototype.addEventListeners = function() {
   this.flip.onclick = this.showBack.inScope(this);
   this.flip.onmouseover = this.enterflip.inScope(this);
   this.flip.onmouseout = this.exitflip.inScope(this);
-}
+};
 
 Obfuscatr.prototype.isValidEmail = function(email) {
-  var rgx = /^([\w-\.\+])+\@([\w-]+\.)+([\w]{2,4})+$/;
-  return rgx.test(email)
-}
+  var rgx = /^([\w\-\.\+])+\@([\w\-]+\.)+([\w]{2,})+$/;
+  return rgx.test(email);
+};
 
 Obfuscatr.prototype.errorHandle = function(id) {
   var str;
@@ -100,72 +101,71 @@ Obfuscatr.prototype.errorHandle = function(id) {
   this.msg.style.display = 'block';
   this.btn.innerHTML = '';
   createGenericButton(this.btn, "Back", this.goBack.inScope(this));
-}
+};
 
 Obfuscatr.prototype.obfuscate = function() {
   var email = this.box.value;
-  if (email.length == 0) {
+  if (email.length === 0) {
     this.errorHandle(1);
   } else if (!this.isValidEmail(email)) {
     this.errorHandle(2);
   } else {
+    var result;
     // obfuscate in respect of the selected method of obfuscation
     if (this.algorithmJs.checked) {
-      var jsStr = 'document.write(\'<a href="mailto:' + email + '">' + email + '</a>\');',
-      obfStr = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
+      var jsStr = 'document.write(\'<a href="mailto:' + email + '">' + email + '</a>\');';
+      result = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
     } else {
-      obfStr = '<script type="text/javascript">function obfuscatrtr() { window.location = \'mailto:\' + this.innerHTML.split("").reverse().join(""); }</script>\
-        <a href="javascript:void(0);" onclick="obfuscatrtr.apply(this)" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
+      result = '<script type="text/javascript">function obfuscatrtr() { window.location = \'mailto:\' + this.innerHTML.split("").reverse().join(""); }</script>' +
+        '<a href="javascript:void(0);" onclick="obfuscatrtr.apply(this)" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
     }
     this.btn.innerHTML = '';
     createGenericButton(this.btn, "Copy", this.copy.inScope(this));
     this.stage = 1;
-    this.box.value = obfStr;
+    this.box.value = result;
     this.toggle();
   }
-}
+};
 
 Obfuscatr.prototype.copy = function() {
   widget.system("/bin/echo -n '" + this.obfStr.toString() + "' | /usr/bin/pbcopy", null);
-  errorHandle(3);
-}
+  this.errorHandle(3);
+};
 
 Obfuscatr.prototype.goBack = function(event) {
   this.btn.innerHTML = '';
   this.msg.innerHTML = '';
   this.field.style.display = 'block';
   createGenericButton(this.btn, "Obfuscate!", this.obfuscate.inScope(this));
-  toggle();
-}
+  this.toggle();
+};
 
 Obfuscatr.prototype.launchChangelog = function() {
   widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
-}
+};
 
 Obfuscatr.prototype.launchSite = function() {
   widget.openURL('http://obfuscatr.flashbit.net');
-}
+};
 
 Obfuscatr.prototype.toggle = function() {
   this.box.focus();
   this.box.select();
-}
+};
 
 Obfuscatr.prototype.proceed = function() {
   // halt on 0 input
-  if (this.box.value == '') {
+  if (this.box.value === '') {
     return false;
   }
   // proceed according to the active stage
-  switch (this.stage) {
-    case 1:
+  if (this.stage === 1) {
       this.copy();
-      break;
-    default:
+  } else {
       this.obfuscate();
   }
   return true;
-}
+};
 
 Obfuscatr.prototype.showBack = function() {
   this.front.style.display = "none";
@@ -174,7 +174,7 @@ Obfuscatr.prototype.showBack = function() {
     widget.prepareForTransition("ToBack");
     setTimeout (widget.performTransition, 0);
   }
-}
+};
 
 Obfuscatr.prototype.hideBack = function () {
   this.back.style.display = "none";
@@ -183,23 +183,23 @@ Obfuscatr.prototype.hideBack = function () {
     widget.prepareForTransition("ToFront");
     setTimeout (widget.performTransition, 0);
   }
-}
+};
 
 Obfuscatr.prototype.limit_3 = function(a, b, c) {
   return a < b ? b : (a > c ? c : a);
-}
+};
 
 Obfuscatr.prototype.computeNextFloat = function(from, to, ease) {
   return from + (to - from) * ease;
-}
+};
 
 Obfuscatr.prototype.enterflip = function(event) {
   this.fliprollie.style.display = "block";
-}
+};
 
 Obfuscatr.prototype.exitflip = function(event) {
   this.fliprollie.style.display = "none";
-}
+};
 
 Obfuscatr.prototype.animate = function() {
   var T;
@@ -216,7 +216,7 @@ Obfuscatr.prototype.animate = function() {
     this.animation.now = this.computeNextFloat(this.animation.from, this.animation.to, ease);
   }
   this.animation.firstElement.style.opacity = this.animation.now;
-}
+};
 
 Obfuscatr.prototype.mousemove = function(event) {
   if (!this.flipShown) {
@@ -225,7 +225,7 @@ Obfuscatr.prototype.mousemove = function(event) {
       this.animation.timer  = null;
     }
     this.animation.duration = 500;
-    this.animation.starttime = new Date().getTime() - 13;;
+    this.animation.starttime = new Date().getTime() - 13;
     this.animation.firstElement = this.flip;
     this.animation.timer = setInterval(this.animate.inScope(this), 13);
     this.animation.from = this.animation.now;
@@ -233,7 +233,7 @@ Obfuscatr.prototype.mousemove = function(event) {
     this.animate(this);
     this.flipShown = true;
   }
-}
+};
 
 Obfuscatr.prototype.mouseexit = function(event) {
   if (this.flipShown) {
@@ -251,4 +251,4 @@ Obfuscatr.prototype.mouseexit = function(event) {
     this.animate();
     this.flipShown = false;
   }
-}
+};
