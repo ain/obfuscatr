@@ -1,3 +1,5 @@
+var createGenericButton = createGenericButton || function() { throw new Error('Please run in Dashboard context!'); };
+
 String.prototype.bin2hex = function() {
   var str = '';
   for (var x = 0, l = this.split("").length; x < l; x++) {
@@ -19,6 +21,7 @@ Function.prototype.inScope = function(scope)
 
 /** @constructor */
 function Obfuscatr() {
+  this.result = null;
   this.stage = 0;
   this.front = null;
   this.fliprollie = null;
@@ -53,7 +56,7 @@ function Obfuscatr() {
  */
 Obfuscatr.prototype.widget = function() {
   return window.widget;
-}
+};
 
 Obfuscatr.prototype.init = function() {
   this.front = document.getElementById("front");
@@ -121,26 +124,25 @@ Obfuscatr.prototype.obfuscate = function() {
   } else if (!this.isValidEmail(email)) {
     this.errorHandle(2);
   } else {
-    var result;
     // obfuscate in respect of the selected method of obfuscation
     if (this.algorithmJs.checked) {
       var jsStr = 'document.write(\'<a href="mailto:' + email + '">' + email + '</a>\');';
-      result = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
+      this.result = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
     } else {
-      result = '<script type="text/javascript">function obfuscatrtr() { window.location = \'mailto:\' + this.innerHTML.split("").reverse().join(""); }</script>' +
+      this.result = '<script type="text/javascript">function obfuscatrtr() { window.location = \'mailto:\' + this.innerHTML.split("").reverse().join(""); }</script>' +
         '<a href="javascript:void(0);" onclick="obfuscatrtr.apply(this)" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
     }
     this.btn.innerHTML = '';
     createGenericButton(this.btn, "Copy", this.copy.inScope(this));
     this.stage = 1;
-    this.box.value = result;
+    this.box.value = this.result;
     this.toggle();
   }
 };
 
 Obfuscatr.prototype.copy = function() {
 //  if (window.widget) {
-    this.widget.system("/bin/echo -n '" + this.obfStr.toString() + "' | /usr/bin/pbcopy", null);
+    this.widget.system("/bin/echo -n '" + this.result.toString() + "' | /usr/bin/pbcopy", null);
     this.errorHandle(3);
 //  }
 };
