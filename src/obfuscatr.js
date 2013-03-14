@@ -1,5 +1,3 @@
-var createGenericButton = createGenericButton || function() { throw new Error('Please run in Dashboard context!'); };
-
 String.prototype.bin2hex = function() {
   var str = '';
   for (var x = 0, l = this.split("").length; x < l; x++) {
