@@ -1,26 +1,39 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>obfuscatr - email address obfuscator</title>
-        <link rel="stylesheet" href="obfuscatr.css" type="text/css" media="screen" />
-        <script type="text/javascript" src="obfuscatr.js"></script>
-        <script type='text/javascript' src='file:///System/Library/WidgetResources/button/genericButton.js' charset='utf-8'/>
-    </head>
-    <body onload="init()">
-        <div id="front" onmousemove="mousemove(event)" onmouseout="mouseexit(event)">
-            <div id="field"><input type="search" id="box" name="email" size="27" onsearch="proceed()" value="Enter an email here" /></div>
-            <div id="msg"></div>
-            <div id="btn"></div>
-            <div class="flipi" id="flip" onclick="showBack(event)" onmouseover="enterflip(event)" onmouseout="exitflip(event)"></div> 
-	        <div class="flipi" id="fliprollie"></div>
-        </div>
-        <div id="back">
-            <div id="logo" onclick="widget.openURL('http://obfuscatr.flashbit.net/index.html')">obfuscat<span>r</span></div>
-            <div id="options">
-                <input type="checkbox" id="jsCBox" name="jsEnabled" checked="checked" /> 
-                <a href="#" onclick="setJSEnabled()">Javascript obfuscation</a>
-            </div>
-            <div id="txt"><a href="javascript:widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog')">Version 1.2.0</a> &copy; 2007-2009 Flashbit LLC.</div>
-            <div id="doneBtn" onclick="hideBack()"></div>
-        </div>
-    </body>
+  <head>
+    <title>obfuscatr - email address obfuscator</title>
+    <link rel="stylesheet" href="obfuscatr.css" type="text/css" media="screen">
+    <script type='text/javascript' src='file:///System/Library/WidgetResources/button/genericButton.js' charset='utf-8'></script>
+    <script type="text/javascript" src="obfuscatr.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+      var obfuscatr = new Obfuscatr();
+      window.onload = obfuscatr.init.inScope(obfuscatr);
+    </script>
+  </head>
+  <body>
+    <div id="front">
+      <div id="field">
+        <input type="search" id="box" name="email" size="27" placeholder="Enter your email here">
+      </div>
+      <div id="msg"></div>
+      <div id="btn"></div>
+      <div class="flipi" id="flip"></div>
+      <div class="flipi" id="fliprollie"></div>
+    </div>
+    <div id="back">
+      <div id="logo">obfuscat<span>r</span></div>
+      <div id="options">
+        Algorithm:
+        <label>
+          <input type="radio" id="algorithm-css" name="algorithm" checked="checked"> CSS
+        </label>
+        <label>
+          <input type="radio" id="algorithm-js" name="algorithm"> JavaScript
+        </label>
+      </div>
+      <div id="txt"><a href="#" id="link-changelog">Version 1.3.0</a> © 2007-2013 OÜ Flashbit.</div>
+      <div id="btn-done"></div>
+    </div>
+  </body>
 </html>

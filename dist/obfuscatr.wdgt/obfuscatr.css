@@ -9,7 +9,7 @@ a:hover {color:#f58621;}
 
 #field {position:absolute; top:25px; left:30px; dispay:block;}
 #msg {position:absolute; top:30px; left:30px; display:none; color:#404042; font-size:12px; text-shadow:1px 1px 1px #fff;}
-#btn, #doneBtn {position:absolute; top:25px; right:25px;}
+#btn, #btn-done {position:absolute; top:25px; right:25px;}
 
 .flipi {position: absolute; bottom:5px; right:5px; width:13px; height:13px;}
 #flip {opacity:0; background: url(file:///System/Library/WidgetResources/ibutton/white_i.png) no-repeat top left; z-index:8000;}
