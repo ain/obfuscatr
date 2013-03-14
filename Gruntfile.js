@@ -28,7 +28,17 @@ module.exports = function(grunt) {
     },
     copy: {
       dist: {
-        expand: true, cwd: 'src/', src: ['*', '!obfuscatr.js'], dest: 'dist/<%= pkg.name %>.wdgt/'/*, processContentExclude: 'obfuscatr.js'*/
+        expand: true, cwd: 'src/', src: ['*', '!obfuscatr.js'], dest: 'dist/<%= pkg.name %>.wdgt/'
+      }
+    },
+    compress: {
+      dist: {
+        options: {
+          archive: 'dist/<%= pkg.name %>.wdgt.zip'
+        },
+        files: [
+          {expand: true, cwd: 'dist/<%= pkg.name %>.wdgt', src: ['*'], dest: '<%= pkg.name %>.wdgt/'}
+        ]
       }
     },
     jshint: {
@@ -77,8 +87,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy', 'compress']);
 
 };
