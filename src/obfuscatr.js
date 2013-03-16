@@ -45,17 +45,6 @@ function Obfuscatr() {
   };
 }
 
-/**
- * Retrieve Dashboard Widget API.
- *
- * @todo return mock system if API is missing
- *
- * @returns {@exp;window@pro;widget}
- */
-Obfuscatr.prototype.widget = function() {
-  return window.widget;
-};
-
 Obfuscatr.prototype.init = function() {
   this.front = document.getElementById("front");
   this.fliprollie = document.getElementById("fliprollie");
@@ -127,7 +116,7 @@ Obfuscatr.prototype.obfuscate = function() {
       var jsStr = 'document.write(\'<a href="mailto:' + email + '">' + email + '</a>\');';
       this.result = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
     } else {
-      this.result = '<script type="text/javascript">function obfuscatrtr() { window.location = \'mailto:\' + this.innerHTML.split("").reverse().join(""); }</script>' +
+      this.result = '<script type="text/javascript">function obfuscatrtr() { window.location = "mailto:" + this.innerHTML.split("").reverse().join(""); }</script>' +
         '<a href="javascript:void(0);" onclick="obfuscatrtr.apply(this)" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
     }
     this.btn.innerHTML = '';
@@ -139,10 +128,10 @@ Obfuscatr.prototype.obfuscate = function() {
 };
 
 Obfuscatr.prototype.copy = function() {
-//  if (window.widget) {
-    this.widget.system("/bin/echo -n '" + this.result.toString() + "' | /usr/bin/pbcopy", null);
+  if (window.widget) {
+    window.widget.system("/bin/echo -n '" + this.result + "' | /usr/bin/pbcopy", null);
     this.errorHandle(3);
-//  }
+  }
 };
 
 Obfuscatr.prototype.goBack = function(event) {
@@ -154,13 +143,15 @@ Obfuscatr.prototype.goBack = function(event) {
 };
 
 Obfuscatr.prototype.launchChangelog = function() {
-  if (this.widget) {
-    this.widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
+  if (window.widget) {
+    window.widget.openURL('http://obfuscatr.flashbit.net/download.html#changelog');
   }
 };
 
 Obfuscatr.prototype.launchSite = function() {
-  this.widget.openURL('http://obfuscatr.flashbit.net');
+  if (window.widget) {
+    window.widget.openURL('http://obfuscatr.flashbit.net');
+  }
 };
 
 Obfuscatr.prototype.toggle = function() {
@@ -185,15 +176,19 @@ Obfuscatr.prototype.proceed = function() {
 Obfuscatr.prototype.showBack = function() {
   this.front.style.display = "none";
   this.back.style.display = "block";
-  this.widget.prepareForTransition("ToBack");
-  setTimeout (this.widget.performTransition, 0);
+  if (window.widget) {
+    window.widget.prepareForTransition("ToBack");
+    setTimeout(window.widget.performTransition, 0);
+  }
 };
 
 Obfuscatr.prototype.hideBack = function () {
   this.back.style.display = "none";
   this.front.style.display = "block";
-  this.widget.prepareForTransition("ToFront");
-  setTimeout (this.widget.performTransition, 0);
+  if (window.widget) {
+    window.widget.prepareForTransition("ToFront");
+    setTimeout(window.widget.performTransition, 0);
+  }
 };
 
 Obfuscatr.prototype.limit_3 = function(a, b, c) {
