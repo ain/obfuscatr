@@ -174,22 +174,27 @@ Obfuscatr.prototype.proceed = function() {
 };
 
 Obfuscatr.prototype.showBack = function() {
+  if (window.widget) {
+    window.widget.prepareForTransition("ToBack");
+  }
   this.front.style.display = "none";
   this.back.style.display = "block";
   if (window.widget) {
-    window.widget.prepareForTransition("ToBack");
-    setTimeout(window.widget.performTransition, 0);
+    setTimeout("widget.performTransition()", 0);
   }
 };
 
 Obfuscatr.prototype.hideBack = function () {
-  this.back.style.display = "none";
-  this.front.style.display = "block";
   if (window.widget) {
     window.widget.prepareForTransition("ToFront");
-    setTimeout(window.widget.performTransition, 0);
+  }
+  this.front.style.display = "block";
+  this.back.style.display = "none";
+  if (window.widget) {
+    setTimeout("widget.performTransition()", 0);
   }
 };
+
 
 Obfuscatr.prototype.limit_3 = function(a, b, c) {
   return a < b ? b : (a > c ? c : a);
