@@ -64,11 +64,11 @@ module.exports = function(grunt) {
       },
       lib_test: {
         src: ['lib/**/*.js', 'test/**/*.js']
-      }
-// TODO enable on source
-//      src: {
-//        src: ['src/*.js']
-//      }
+      }/*,
+      // TODO enable on source
+      src: {
+        src: ['src/*.js']
+      }*/
     },
     qunit: {
       files: ['test/**/*.html']

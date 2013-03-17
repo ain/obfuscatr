@@ -180,7 +180,11 @@ Obfuscatr.prototype.showBack = function() {
   this.front.style.display = "none";
   this.back.style.display = "block";
   if (window.widget) {
-    setTimeout("widget.performTransition()", 0);
+    setTimeout(function() {
+      if (window.widget) { 
+        widget.performTransition();
+      }
+    }, 0);
   }
 };
 
@@ -191,7 +195,11 @@ Obfuscatr.prototype.hideBack = function () {
   this.front.style.display = "block";
   this.back.style.display = "none";
   if (window.widget) {
-    setTimeout("widget.performTransition()", 0);
+    setTimeout(function() {
+      if (window.widget) { 
+        widget.performTransition();
+      }
+    }, 0);
   }
 };
 
