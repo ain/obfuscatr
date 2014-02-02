@@ -1,0 +1,52 @@
+html {margin:0px;}
+body {margin:0px; background-color:#404042; font-family:Helvetica, sans-serif; font-size:14px; color:#acb8c6; background-image:url('graphics.jpg'); background-repeat:no-repeat;}
+abbr {border-bottom:1px dotted #acb8c6; cursor:help;}
+img {border:0px none;}
+
+a {color:#acb8c6; text-decoration:none;}
+a:hover {text-decoration:none;}
+
+h1, h2, h3 {font-weight:normal; }
+h1 {font-size:50px; margin-top:30px;}
+
+#wrapper {position:absolute; left:390px; z-index:2; width:410px;}
+#wrapper {display:block;}
+#wrapper div {margin-right:50px; }
+#wrapper a:hover {border-bottom:1px dotted #f58621;}
+#wrapper a.cln:hover {border-bottom:0px none;}
+#wrapper ol {padding-left:22px; padding-bottom:15px;}
+#wrapper p.indented {margin-left:40px;}
+#wrapper p.downloadBtn {font-size:21px; background-image:url('icon.jpg'); background-repeat:no-repeat; background-position:left center; padding:11px;}
+#wrapper p.downloadBtn a {color:#acb8c6; padding-left:50px;}
+#wrapper p.downloadBtn a:hover {border-bottom:0px none; color:#f58621;}
+#wrapper p.upBtn {padding-top:15px;}
+#wrapper p.upBtn a {background-image:url('up.gif'); background-repeat:no-repeat; background-position:left center; color:#acb8c6; padding-left:15px;}
+#wrapper p.upBtn a:hover {border-bottom:0px none; color:#f58621;}
+#wrapper a.btn {margin-left:5px; padding:5px; background-color:#474749; color:#acb8c6; width:100px;}
+#wrapper a.btn:hover {background-color:#54575c; border:0px none;}
+#wrapper #msg {margin-left:2px; color:#ff4e00; padding:8px 0px 8px 0px; display:none;}
+
+#wrapper #logo {padding:50px 0px 30px 0px;}
+#wrapper #logo a {font-size:40px; color:#acb8c6;}
+#wrapper #logo a:hover {color:#acb8c6; border:0px none;}
+
+#wrapper ul#menu {padding:0px; list-style:none;}
+#wrapper ul#menu li {margin-bottom:8px;}
+#wrapper ul#menu li.active {color:#acb8c6;}
+#wrapper ul#menu li a {font-size:15px; color:#767c84;}
+#wrapper ul#menu li a:hover {border-bottom:1px dotted #acb8c6; color:#acb8c6;}
+
+#wrapper #footer a {color:#acb8c6; text-decoration:none;}
+#wrapper #footer a:hover {color:#f58621; text-decoration:none; border:0px none;}
+
+span, a:hover, #wrapper a {color:#f58621;}
+
+div#footer {width:260px; background-color:#454548; font-size:11px; padding:10px; margin:30px 0px 30px 0px;}
+
+input#box {height:20px; border:1px solid #454548; background-color:#474749; color:#acb8c6; font-size:14px; padding:6px;}
+
+#ad {position:absolute; left:830px; top:60px;}
+
+code {font-size:12px;}
+
+a#RSSIcon {background:url('rss-icon.gif') no-repeat left center; padding:5px 0px 5px 30px; display:block; margin-bottom:20px;}
