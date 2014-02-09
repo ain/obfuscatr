@@ -1,0 +1,15 @@
+- name: About
+  font_size: 16
+  url: /index.html
+- name: Why?
+  font_size: 21
+  url: /why.html
+- name: Contact
+  font_size: 14
+  url: /contact.html
+- name: Obfuscate!
+  font_size: 22
+  url: /obfuscate.html
+- name: Download
+  font_size: 17
+  url: /download.html

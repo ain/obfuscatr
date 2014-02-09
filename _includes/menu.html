@@ -1,0 +1,9 @@
+<ul id="menu">
+{% for menu_item in site.data.menu %}
+  {% if menu_item.url == page.url %}
+    <li class="active" style="font-size: {{ menu_item.font_size }}px;">{{ menu_item.name }}</li>
+  {% else %}
+    <li><a href="{{ menu_item.url }}" style="font-size: {{ menu_item.font_size}}px;">{{ menu_item.name }}</a>
+  {% endif %}
+{% endfor %}
+</ul>
