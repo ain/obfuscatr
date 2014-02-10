@@ -1,10 +1,3 @@
-String.prototype.bin2hex = function() {
-  var str = '';
-  for (var x = 0, l = this.split("").length; x < l; x++) {
-    str += '%'+this.charCodeAt(x).toString(16);
-  }
-  return str;
-};
 String.prototype.reverse = function() {
   return this.split("").reverse().join("");
 };
@@ -30,7 +23,6 @@ function Obfuscatr() {
   this.box = null;
   this.logo = null;
   this.linkChangelog = null;
-  this.algorithmJs = null;
   this.back = null;
   this.btnDone = null;
   this.flipShown = false;
@@ -57,7 +49,6 @@ Obfuscatr.prototype.init = function() {
 
   this.logo = document.getElementById('logo');
   this.linkChangelog = document.getElementById('link-changelog');
-  this.algorithmJs = document.getElementById('algorithm-js');
   this.back = document.getElementById("back");
   this.btnDone = document.getElementById('btn-done');
   createGenericButton(this.btnDone, "Done", this.hideBack.inScope(this));
@@ -111,14 +102,7 @@ Obfuscatr.prototype.obfuscate = function() {
   } else if (!this.isValidEmail(email)) {
     this.errorHandle(2);
   } else {
-    // obfuscate in respect of the selected method of obfuscation
-    if (this.algorithmJs.checked) {
-      var jsStr = 'document.write(\'<a href="mailto:' + email + '">' + email + '</a>\');';
-      this.result = '<script type="text/javascript">eval(unescape("' + jsStr.bin2hex() + '"));</script>';
-    } else {
-      this.result = '<script type="text/javascript">function obfuscatrtr() { window.location = "mailto:" + this.innerHTML.split("").reverse().join(""); }</script>' +
-        '<a href="javascript:void(0);" onclick="obfuscatrtr.apply(this)" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
-    }
+    this.result = '<a href="javascript:void(0);" onclick="window.location = \'mailto:\' + this.innerHTML.split(\'\').reverse().join(\'\');" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
     this.btn.innerHTML = '';
     createGenericButton(this.btn, "Copy", this.copy.inScope(this));
     this.stage = 1;
