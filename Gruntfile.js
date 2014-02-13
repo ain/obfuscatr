@@ -79,6 +79,10 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     watch: {
+      core: {
+        files: '<%= concat.dist.src %>',
+        tasks: ['default']
+      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']

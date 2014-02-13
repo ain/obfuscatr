@@ -102,7 +102,7 @@ Obfuscatr.prototype.obfuscate = function() {
   } else if (!this.isValidEmail(email)) {
     this.errorHandle(2);
   } else {
-    this.result = '<a href="javascript:void(0);" onclick="window.location = \'mailto:\' + this.innerHTML.split(\'\').reverse().join(\'\');" style="direction:rtl; unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
+    this.result = '<a href="javascript:void(0)"; onclick="window.location=\'mailto:\'+this.innerHTML.split(\'\').reverse().join(\'\');" style="direction:rtl;unicode-bidi:bidi-override;">' + email.reverse() + '</a>';
     this.btn.innerHTML = '';
     createGenericButton(this.btn, "Copy", this.copy.inScope(this));
     this.stage = 1;
@@ -113,7 +113,8 @@ Obfuscatr.prototype.obfuscate = function() {
 
 Obfuscatr.prototype.copy = function() {
   if (window.widget) {
-    window.widget.system("/bin/echo -n '" + this.result + "' | /usr/bin/pbcopy", null);
+    var escapedResult = this.result.replace(/"/g, '\\"');
+    window.widget.system('/bin/echo -n "' + escapedResult + '" | /usr/bin/pbcopy', null);
     this.errorHandle(3);
   }
 };
