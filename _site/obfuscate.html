@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Obfuscate! | obfuscatr - email address obfuscator</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,14 +9,11 @@
   <link rel="alternate" type="application/rss+xml" title="Changelog of obfuscatr" href="changelog-rss.xml">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style2.css" type="text/css" media="screen">
-  <script type="text/javascript">
-    window.google_analytics_uacct = "UA-590376-5";
-  </script>
-  </head>
-  <body>
-    <div id="wrapper">
-      <div id="logo"><a href="index.html" title="Email address obfuscator">obfuscat<span>r</span></a></div>
-      <ul id="menu">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="logo"><a href="index.html" title="Email address obfuscator">obfuscat<span>r</span></a></div>
+    <ul id="menu">
 
   
     <li><a href="/index.html" style="font-size: 16px;">About</a>
@@ -39,48 +37,31 @@
 
 </ul>
 
-      <h1 id="obfuscate">Obfuscate!</h1>
+    <h1 id="obfuscate">Obfuscate!</h1>
 
 <ol>
-<li>Enter your email into the box below</li>
-
-<li>Click on <em>Obfuscate!</em></li>
-
-<li>The obfuscation of your email will appear in the box</li>
-
-<li>Copy and paste the code from a box to a website or a blog</li>
+  <li>Enter your email into the box below</li>
+  <li>Click on <em>Obfuscate!</em></li>
+  <li>The obfuscation of your email will appear in the box</li>
+  <li>Copy and paste the code from a box to a website or a blog</li>
 </ol>
-<div id='msg'>&nbsp;</div><p id='app'>
-  <input id='box' name='email' onblur='highlight(this,false)' onfocus='highlight(this,true)' onkeypress='checkEnter(event)' type='text' />
-  <a class='btn' href='obfuscate.html#obfuscate' id='obfuscateBtn' onclick='obfuscate()'>Obfuscate!</a>
-  <a class='btn' href='obfuscate.html#obfuscate' id='resetBtn' onclick='reset()'>Reset</a>
+
+<div id="msg">&nbsp;</div>
+<p id="app">
+  <input type="text" name="email" id="box" onfocus="highlight(this,true)" onblur="highlight(this,false)" onkeypress="checkEnter(event)" />
+  <a href="obfuscate.html#obfuscate" onclick="obfuscate()" class="btn" id="obfuscateBtn">Obfuscate!</a>
+  <a href="obfuscate.html#obfuscate" onclick="reset()" class="btn" id="resetBtn">Reset</a>
 </p>
+
 <p>For a much more convenient and fully-featured version <a href="download.html" title="Download obfuscatr widget">click here</a> for the obuscat<span>r</span> Dashboard widget.<br /> Widget is available for <a href="http://www.apple.com/osx/" title="Use Mac OS X">Mac OS X</a> users only.</p>
-      <p class="upBtn"><a href="#logo" title="Back to the top">Up</a></p>
+
+    <p class="upBtn"><a href="#logo" title="Back to the top">Up</a></p>
 <div id="footer">
-  <p>Standards compliant browser is highly recommended, e.g. <a href="http://www.mozilla.com/en-US/firefox/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a>, <a href="http://www.google.com/chrome" title="Google Chrome">Chrome</a> or <a href="http://www.opera.com/">Opera</a>.</p>
-  <p>Copyright &copy; 2007-2014 <a href="http://www.flashbit.net/" title="obfuscatr is powered by Flashbit">OÜ Flashbit</a>. All rights reserved.</p>
+  <p>Standards compliant browser is highly recommended, e.g. <a href="https://www.mozilla.org/en-US/firefox/">Firefox</a>, <a href="https://www.apple.com/safari/">Safari</a> or <a href="https://www.google.com/chrome/" title="Google Chrome">Chrome</a>.</p>
+  <p>Copyright &copy; 2007-2014. OÜ Flashbit. All rights reserved.</p>
 </div>
 
-    </div>
-    <div id="ad">
-      <a href="changelog-rss.xml" id="RSSIcon" title="Changelog feed">RSS</a>
-      <p><script type="text/javascript" src="http://osx.iusethis.com/app/include/obfuscatr/5"></script></p>
-      <p><br />
-      <a href="http://validator.w3.org/check?uri=referer" title="Valid XHTML"><img src="xhtml_valid.gif" alt="Valid XHTML 1.1" /></a><br />
-      <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="css_valid.gif" alt="Valid CSS" /></a><br />
-      <a href="http://tekkie.flashbit.net/css/benefits-of-tableless-design" title="Tableless CSS"><img src="csstableless.gif" alt="Tableless CSS" /></a><br />
-      <a href="http://www.w3csites.com/profile.asp?u=ain"><img src="http://www.w3csites.com/images/icn_w3csites_80x15.gif" alt="Member of W3C Sites dot com " title="Member of W3C Sites dot com " width="80" height="15" /></a>
-      </p>
-    </div>
-
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-      try {
-        var pageTracker = _gat._getTracker("UA-590376-5");
-        pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
-  </body>
+  </div>
+  <div id="ad"><a href="changelog-rss.xml" id="RSSIcon" title="Changelog feed">RSS</a></div>
+</body>
 </html>

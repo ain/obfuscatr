@@ -25,6 +25,7 @@ h1 {font-size:50px; margin-top:30px;}
 #wrapper a.btn {margin-left:5px; padding:5px; background-color:#474749; color:#acb8c6; width:100px;}
 #wrapper a.btn:hover {background-color:#54575c; border:0px none;}
 #wrapper #msg {margin-left:2px; color:#ff4e00; padding:8px 0px 8px 0px; display:none;}
+#wrapper blockquote {border-left: 2px solid #f58621; color: #f58621; margin-left: 0; padding-left: 20px}
 
 #wrapper #logo {padding:50px 0px 30px 0px;}
 #wrapper #logo a {font-size:40px; color:#acb8c6;}

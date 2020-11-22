@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Why? | obfuscatr - email address obfuscator</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,14 +9,11 @@
   <link rel="alternate" type="application/rss+xml" title="Changelog of obfuscatr" href="changelog-rss.xml">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style2.css" type="text/css" media="screen">
-  <script type="text/javascript">
-    window.google_analytics_uacct = "UA-590376-5";
-  </script>
-  </head>
-  <body>
-    <div id="wrapper">
-      <div id="logo"><a href="index.html" title="Email address obfuscator">obfuscat<span>r</span></a></div>
-      <ul id="menu">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="logo"><a href="index.html" title="Email address obfuscator">obfuscat<span>r</span></a></div>
+    <ul id="menu">
 
   
     <li><a href="/index.html" style="font-size: 16px;">About</a>
@@ -39,72 +37,46 @@
 
 </ul>
 
-      <h1 id="why">Why?</h1>
+    <h1 id="why">Why?</h1>
 
-<h2 id="_why_are_so_many_of_us_afraid_of_making_their_email_address_accessible"><span>Q:</span> Why are so many of us afraid of making their email address accessible?</h2>
+<h2 id="q-why-are-so-many-of-us-afraid-of-making-their-email-address-accessible"><span>Q:</span> Why are so many of us afraid of making their email address accessible?</h2>
 
 <p>Latest studies show that over 97% of the spam is being sent to addresses that have been posted on public websites. In most cases they look like this:</p>
 
-<p><code>&lt;a href=&quot;mailto:me@mydomain.com&quot;&gt;me@mydomain.com&lt;/a&gt;</code></p>
+<p><code>&lt;a href="mailto:me@mydomain.com"&gt;me@mydomain.com&lt;/a&gt;</code></p>
 
 <p>or even without a link:</p>
 
 <p><code>me@mydomain.com</code></p>
 
-<h2 id="_so_how_should_i_post_the_email_then"><span>Q:</span> So how should I post the email then?</h2>
+<h2 id="q-how-should-i-post-the-email"><span>Q:</span> How should I post the email?</h2>
 
-<p>1st option:</p>
+<p>Roughly, there are 3 options:</p>
 
-<blockquote>
-<p>post the email like <em>me [at] mydomain.com</em> or replace an @ sign with a respective graphic. You can’t click it, it’s not a link and New message window is not going to pop up. So your client, a friend or mom just has to remember it for a minute, open the the New email window and type it in. Yes, it’s clumsy and it might not work. Spammers are smart.</p>
-</blockquote>
+<ol>
+  <li>Post the email like <em>me [at] mydomain.com</em> or replace an @ sign with a respective graphic. You can’t click it, it’s not a link and New message window is not going to pop up. So your client, a friend or mom just has to remember it for a minute, open the the New email window and type it in. Yes, it’s clumsy and it might not work. Spammers are smart.</li>
+  <li>Call your IT and advise the use of <abbr title="Domain Name Server blacklist">DNSBL</abbr>, install SpamAssassin, configure the mail server to make <abbr title="Reverse DNS lookup">rDNS</abbr> and investigate the possibilities of using <abbr title="Disposable Email Addressing">DEA</abbr>.</li>
+  <li>Use address munging.</li>
+</ol>
 
-<p>2nd option:</p>
+<h2 id="q-what-is-address-munging-and-why"><span>Q:</span> What is address munging and why?</h2>
 
-<blockquote>
-<p>call your IT. Tell him to use <abbr title='Domain Name Server blacklist'>DNSBL</abbr>, install SpamAssassin, configure the mail server to make <abbr title='Reverse DNS lookup'>rDNS</abbr> and investigate the possibilities of using <abbr title='Disposable Email Addressing'>DEA</abbr>. Excuse me, what was that again? Right. Let’s just move on.</p>
-</blockquote>
+<p>One of the most common ways for the spammers to get your email address is to use a specific software, a bot that crawls websites, public mailing list archives and/or other sites for emails.
+Address munging would basically mean changing your email address into something they can’t detect. It is the obfuscation process.</p>
 
-<p>3rd option:</p>
+<h2 id="q-how-do-i-obfuscate-an-email"><span>Q:</span> How do I obfuscate an email?</h2>
 
-<blockquote>
-<p>Use address munging.</p>
-</blockquote>
+<p>Use <a href="/obfuscate.html" title="Obfuscate your email">obfuscatr</a>. It turns an email into code that you can copy and paste to your site.</p>
 
-<h2 id="_what_is_address_munging_and_why"><span>Q:</span> What is address munging and why?</h2>
+<p>If you are using Mac that is older than macOS Catalina, you may also want to download <a href="/download.html">obfuscatr Dashboard widget</a>.</p>
 
-<p>One of the most common ways for the spammers to get your email address is to use a specific software, an harvesting bot, that spiders websites, public mailing list archives or any other sites for emails. Address munging would basically mean changing your email address into something they can’t detect. It is the obfuscation process.</p>
-
-<h2 id="_how_do_i_obfuscate_an_email"><span>Q:</span> How do I obfuscate an email?</h2>
-
-<p>Use <a href='obfuscate.html' title='Obfuscate your email'>obfuscatr</a>. It turns your email into a bunch of code that you can copy and paste to your site.</p>
-
-<p>If you are using Mac, you may also want to download <a href="download.html">obfuscatr Dashboard widget</a>.</p>
-      <p class="upBtn"><a href="#logo" title="Back to the top">Up</a></p>
+    <p class="upBtn"><a href="#logo" title="Back to the top">Up</a></p>
 <div id="footer">
-  <p>Standards compliant browser is highly recommended, e.g. <a href="http://www.mozilla.com/en-US/firefox/">Firefox</a>, <a href="http://www.apple.com/safari/">Safari</a>, <a href="http://www.google.com/chrome" title="Google Chrome">Chrome</a> or <a href="http://www.opera.com/">Opera</a>.</p>
-  <p>Copyright &copy; 2007-2014 <a href="http://www.flashbit.net/" title="obfuscatr is powered by Flashbit">OÜ Flashbit</a>. All rights reserved.</p>
+  <p>Standards compliant browser is highly recommended, e.g. <a href="https://www.mozilla.org/en-US/firefox/">Firefox</a>, <a href="https://www.apple.com/safari/">Safari</a> or <a href="https://www.google.com/chrome/" title="Google Chrome">Chrome</a>.</p>
+  <p>Copyright &copy; 2007-2014. OÜ Flashbit. All rights reserved.</p>
 </div>
 
-    </div>
-    <div id="ad">
-      <a href="changelog-rss.xml" id="RSSIcon" title="Changelog feed">RSS</a>
-      <p><script type="text/javascript" src="http://osx.iusethis.com/app/include/obfuscatr/5"></script></p>
-      <p><br />
-      <a href="http://validator.w3.org/check?uri=referer" title="Valid XHTML"><img src="xhtml_valid.gif" alt="Valid XHTML 1.1" /></a><br />
-      <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="css_valid.gif" alt="Valid CSS" /></a><br />
-      <a href="http://tekkie.flashbit.net/css/benefits-of-tableless-design" title="Tableless CSS"><img src="csstableless.gif" alt="Tableless CSS" /></a><br />
-      <a href="http://www.w3csites.com/profile.asp?u=ain"><img src="http://www.w3csites.com/images/icn_w3csites_80x15.gif" alt="Member of W3C Sites dot com " title="Member of W3C Sites dot com " width="80" height="15" /></a>
-      </p>
-    </div>
-
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-      try {
-        var pageTracker = _gat._getTracker("UA-590376-5");
-        pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
-  </body>
+  </div>
+  <div id="ad"><a href="changelog-rss.xml" id="RSSIcon" title="Changelog feed">RSS</a></div>
+</body>
 </html>
