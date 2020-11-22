@@ -25,4 +25,3 @@ Awards &amp; references:
 Further reading:
 - [Where spam comes from](http://news.bbc.co.uk/2/hi/technology/2969783.stm) (BBC News)
 - [Address munging](http://en.wikipedia.org/wiki/Address_munging) (Wikipedia)
-- [Nine ways to obfuscate e-mail addresses compared](http://techblog.tilllate.com/2008/07/20/ten-methods-to-obfuscate-e-mail-addresses-compared/) (research by Silvan Mühlemann)
